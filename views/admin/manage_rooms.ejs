@@ -1,0 +1,27 @@
+<% layout("./layouts/a_boilerplate.ejs") %>
+<body class="row-8">
+    <table class="table mt-5 table-dark table-striped col-4 text-center">
+  <thead>
+    <tr>
+      <th scope="col">ROOM</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let room of rooms) { %>
+    <tr>
+      <td><%= room.name %></td>
+      <td><%= room.capacity %></td>
+      <td><%= room.date %></td>
+      <td>
+        <form action="/admin/room/manage/delete/<%= room._id %>?_method=DELETE" method="post">
+            <button class="btn btn-danger"><span class="material-symbols-outlined">delete</span></button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+</body>

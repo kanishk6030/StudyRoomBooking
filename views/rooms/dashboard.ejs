@@ -1,0 +1,42 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body class="row-10">
+  <h1 class="col-6 offset-3 mt-3 fw-bolder mt-5 mb-5 text-center text-secondary">
+    STUDY ROOM BOOKINGS
+  </h1>
+    <!-- <h4 class="col-6 offset-3 mt-3 text-center">
+    Available Rooms
+  </h4> -->
+    <form action="/search/" method="GET" class="col-6 offset-3 mt-3">
+        <label for="" class="fw-medium">Search - </label>
+        <input type="date" name="selected_date"> 
+        <button class="d-inline btn btn-primary mx-3">Search</button>
+    </form>
+<hr class="col-6 offset-3 mt-3">
+    <h4 class="col-6 offset-3 mt-3 text-center">
+    Rooms Available
+  </h4>
+  <hr class="col-6 offset-3 mt-3">
+  <div
+    class="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-3 col-6 offset-3"
+  >
+  <% for(let room of rooms){ %>
+    <div class="card" style="width: 18rem">
+      <!-- <img src="..." class="card-img-top" alt="..." /> -->
+      <div class="card-body">
+        <h5 class="card-title"><%= room.name %></h5>
+        <p class="card-text">
+            Capacity:- <%= room.capacity %>
+        </p>
+        <p class="card-text">
+            Date:- <%= room.date.toLocaleDateString("en-IN",{
+              day:"2-digit",
+              month:"long",
+              year:"numeric"
+            }) %>
+        </p>
+        <a href="/book" class="btn btn-success ">Book Now</a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</body>

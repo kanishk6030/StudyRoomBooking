@@ -1,0 +1,25 @@
+<% layout("./layouts/a_boilerplate.ejs") %>
+<body class="row-8">
+    <h2 class="col-6 offset-3 mt-5 text-center">Rooms</h2>
+    <hr class="col-6 offset-3 border-2">
+    <div class="col-6 offset-3  mt-5">
+        <form id="bookingForm" class="d-flex flex-column gap-4" action="/admin/room" method="post">
+        <div>
+            <label for="name" class="fw-medium">Enter Name:</label>
+            <input type="text" id="name" name="room_name" required />
+        </div>
+
+        <div>
+            <label for="capacity" class="fw-medium">Enter Capacity:</label>
+            <input type="number" id="name" name="room_capacity" required />
+        </div>
+        <div>
+            <label for="date" class="fw-medium">Enter Date:</label>
+            <input type="date" id="name" name="room_date" required />
+        </div>
+
+        <button class="btn btn-outline-success" type="submit">Add Room</button>
+        </form>
+    </div>
+    
+</body>

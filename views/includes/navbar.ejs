@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary row-8">
+  <div class="container-fluid col-6 offset-3" >
+
+    <% if(currUser){ %>
+      <a class="navbar-brand fw-bolder" href="#">Welcome <%= currUser.username %>!</a>
+    <% } %>
+
+    <% if(!currUser){ %>
+      <a class="navbar-brand fw-bolder" href="#">Welcome !</a>
+    <% } %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active fw-medium" aria-current="page" href="/">Home</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex">
+        <li class="nav-item">
+          <a class="nav-link text-success fw-medium" href="/book">Book Room</a>
+        </li>
+        <li class="nav-item me-3">
+          <a class="nav-link text-success fw-medium" href="/book/my">My Room</a>
+        </li>
+
+        <% if(!currUser) { %>
+        <li class="nav-item me-2">
+          <a class="btn btn-primary" href="/login">LogIn</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-success" href="/signup">SignUp</a>
+        </li>
+        <% } %>
+
+        <% if(currUser) { %>
+        <li class="nav-item">
+          <a class="btn btn-danger" href="/logout">Logout</a>
+        </li>
+        <% } %>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<% layout("./layouts/a_boilerplate.ejs") %>
+<body class="row-8">
+    <table class="table mt-5 table-dark table-striped col-4 text-center">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Role</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let user of users) { %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td>
+        <form action="/admin/user/delete/<%= user._id %>?_method=DELETE" method="post">
+            <button class="btn btn-danger"><span class="material-symbols-outlined">delete</span></button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
+</body>
