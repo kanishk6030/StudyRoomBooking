@@ -131,7 +131,7 @@ function sendConfirmation(booking,userEmail,qrCodeDataUrl){
 }
 
 async function generateQRCode(bookingId) {
-  const checkInUrl = `${protocol}://${host}/checkin/${bookingId}`;
+  const checkInUrl = `https://studyroombooking.onrender.com/checkin/${bookingId}`;
   try {
     const qrCodeDataUrl = await QRCode.toDataURL(checkInUrl);
     return qrCodeDataUrl; // This is a Base64 image URL you can embed
