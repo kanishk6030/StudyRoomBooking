@@ -16,7 +16,7 @@ A full-stack web application that allows users to book available study rooms by 
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js (or HTML/CSS/JS if no framework used)
+- **Frontend**: HTML/CSS/JS  (no framework used)
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB (hosted on MongoDB Atlas)
 - **Email Service**: Nodemailer
