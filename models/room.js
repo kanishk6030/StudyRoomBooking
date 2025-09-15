@@ -1,3 +1,4 @@
+const { create } = require("connect-mongo");
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -12,6 +13,14 @@ const roomSchema = new Schema({
         required: true
     },
     date:{
+        type:Date,
+        default:Date.now(),
+    },
+    imageUrl:{
+        type:String,
+        required: true,
+    },
+    createdAt:{
         type:Date,
         default:Date.now(),
     }
