@@ -1,25 +1,33 @@
-<% layout("./layouts/a_boilerplate.ejs") %>
-<body class="row-8">
-    <h2 class="col-6 offset-3 mt-5 text-center">Rooms</h2>
-    <hr class="col-6 offset-3 border-2">
-    <div class="col-6 offset-3  mt-5">
-        <form id="bookingForm" class="d-flex flex-column gap-4" action="/admin/room" method="post">
-        <div>
-            <label for="name" class="fw-medium">Enter Name:</label>
-            <input type="text" id="name" name="room_name" required />
-        </div>
+<% layout("./layouts/boilerplate.ejs") %>
 
-        <div>
-            <label for="capacity" class="fw-medium">Enter Capacity:</label>
-            <input type="number" id="name" name="room_capacity" required />
-        </div>
-        <div>
-            <label for="date" class="fw-medium">Enter Date:</label>
-            <input type="date" id="name" name="room_date" required />
-        </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card p-4 shadow-lg">
+                <h2 class="text-center mb-4 text-info">Add a New Room</h2>
+                <hr class="my-4 text-white-50">
+                <form id="bookingForm" class="d-flex flex-column gap-4" action="/admin/room" method="post" novalidate class="needs-validation">
 
-        <button class="btn btn-outline-success" type="submit">Add Room</button>
-        </form>
+                    <div class="mb-3">
+                        <label for="room_name" class="form-label fw-medium text-light">Room Name</label>
+                        <input type="text" id="room_name" name="room_name" class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="room_capacity" class="form-label fw-medium text-light">Capacity</label>
+                        <input type="number" id="room_capacity" name="room_capacity" class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="room_date" class="form-label fw-medium text-light">Available Date</label>
+                        <input type="date" id="room_date" name="room_date" class="form-control bg-dark text-white border-secondary" required>
+                    </div>
+
+                    <div class="d-grid mt-2">
+                        <button class="btn btn-outline-info fw-bold" type="submit">Add Room</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    
-</body>
+</div>

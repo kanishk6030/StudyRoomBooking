@@ -1,32 +1,38 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<body class="row-8">
-    <h2 class="col-6 offset-3 mt-5 text-center">Edit Your Date and Time</h2>
-    <hr class="col-6 offset-3 border-2">
-    <div class="col-6 offset-3  mt-5">
-        <form id="bookingForm" class="d-flex flex-column gap-4" action="/book/my/edit/<%= booking._id %>?_method=PUT" method="post">
 
-        <label for="room" class="fw-medium">Select Room:</label>
-        <select name="roomId" disabled required>
-            <option><%= room.name %></option>
-        </select>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card p-4 shadow-lg">
+                <h2 class="text-center mb-4 text-info">Edit Your Booking</h2>
+                <hr class="my-4 text-light">
+                <form id="bookingForm" class="d-flex flex-column gap-4" action="/book/my/edit/<%= booking._id %>?_method=PUT" method="post">
 
-        <div>
-            <label for="date" class="fw-medium">Select Date:</label>
-            <input type="date" id="date" name="date" value="<%= booking.date %>" required />
+                    <div class="mb-3">
+                        <label for="room" class="form-label fw-medium text-light">Selected Room:</label>
+                        <input type="text" class="form-control" value="<%= room.name %>" disabled>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label fw-medium text-light">Select Date:</label>
+                        <input type="date" id="date" name="date" value="<%= booking.date %>" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="startTime" class="form-label fw-medium text-light">Start Time:</label>
+                        <input type="time" id="startTime" name="stTime" value="<%= booking.startTime %>" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="endTime" class="form-label fw-medium text-light">End Time:</label>
+                        <input type="time" id="endTime" name="endTime" value="<%= booking.endTime %>" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="d-grid mt-2">
+                        <button class="btn btn-outline-info fw-bold" type="submit">Make Changes</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div>
-            <label for="startTime" class="fw-medium">Start Time:</label>
-            <input type="time" id="startTime" name="stTime" value="<%= booking.startTime  %>"required />
-        </div>
-
-        <div>
-            <label for="endTime" class="fw-medium">End Time:</label>
-            <input type="time" id="endTime" name="endTime" value="<%= booking.endTime  %>" required />
-        </div>
-
-        <button class="btn btn-outline-primary" type="submit">Make Changes</button>
-        </form>
     </div>
-    
-</body>
+</div>

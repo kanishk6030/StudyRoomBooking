@@ -1,11 +1,36 @@
-<% layout("./layouts/a_boilerplate.ejs") %>
-<body class="row-8">
-    <h1 class="col-6 offset-3 mt-3 fw-bolder mt-5 mb-5 text-center text-secondary">
-    STUDY ROOM BOOKINGS
-  </h1>
-    <div class="d-grid gap-2 col-4 mx-auto mt-5">
-  <a href="/admin/room" class="btn btn-outline-secondary mt-4" type="button">Add Rooms</a>
-  <a href="/admin/room/manage" class="btn btn-outline-secondary mt-4" type="button">Manage Rooms</a>
-  <a href="/admin/user" class="btn btn-outline-secondary mt-4" type="button">Manage Users</a>
+<% layout("/layouts/boilerplate.ejs") %>
+<div class="container-fluid py-5 text-center hero-section" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+    <h1 class="display-4 fw-bolder text-white text-shadow-dark">ADMIN DASHBOARD</h1>
+    <p class="lead text-white text-shadow-dark">Manage your study room booking system efficiently.</p>
 </div>
-</body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card p-4 shadow-lg text-center">
+                <h3 class="mb-4 text-info fw-bold">Admin Panel</h3>
+                <div class="d-grid gap-3">
+                    <a href="/admin/room" class="btn btn-outline-primary btn-lg fw-bold">Add Rooms</a>
+                    <a href="/admin/room/manage" class="btn btn-outline-primary btn-lg fw-bold">Manage Rooms</a>
+                    <a href="/admin/user" class="btn btn-outline-primary btn-lg fw-bold">Manage Users</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .hero-section {
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .text-shadow-dark {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+</style>

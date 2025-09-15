@@ -175,7 +175,7 @@ app.post("/signup",async(req,res)=>{
   req.flash("success","Signed Up Successfully");
   return res.redirect("/login");
 }catch(err){
-  res.flash("error" , "Some error occured");
+  req.flash("error" , "Some error occured");
   console.log(err);
 }
 
@@ -198,7 +198,7 @@ app.post("/login",
       return res.redirect("/admin");
     }
   }catch(err){
-    req.flash("error","Nor Logged In");
+    req.flash("error","Not Logged In");
     console.log(err);
   }
   }

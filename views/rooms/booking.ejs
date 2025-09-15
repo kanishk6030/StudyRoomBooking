@@ -1,35 +1,43 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<body class="row-8">
-    <h2 class="col-6 offset-3 mt-5 text-center">Book Your Room</h2>
-    <hr class="col-6 offset-3 border-2">
-    <div class="col-6 offset-3  mt-5">
-        <form id="bookingForm" class="d-flex flex-column gap-4" action="/book" method="post">
 
-        <label for="room" class="fw-medium">Select Room:</label>
-        <select name="roomId" required>
-            <option >-- Choose a Room --</option>
-            <% for(let room of rooms){ %>
-                <option value="<%= room._id %>"><%= room.name %></option>
-            <% } %>
-        </select>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card p-4 shadow-lg">
+                <h2 class="text-center mb-4 text-info">Book Your Room</h2>
+                <hr class="my-4 text-white-50">
+                <form id="bookingForm" class="d-flex flex-column gap-4" action="/book" method="post">
 
-        <div>
-            <label for="date" class="fw-medium">Select Date:</label>
-            <input type="date" id="date" name="date" required />
+                    <div class="mb-3">
+                        <label for="roomId" class="form-label fw-medium text-light">Select Room:</label>
+                        <select name="roomId" id="roomId" class="form-select bg-dark text-white border-secondary" required>
+                            <option value="" disabled selected>-- Choose a Room --</option>
+                            <% for(let room of rooms){ %>
+                                <option value="<%= room._id %>"><%= room.name %></option>
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label fw-medium text-light">Select Date:</label>
+                        <input type="date" id="date" name="date" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="startTime" class="form-label fw-medium text-light">Start Time:</label>
+                        <input type="time" id="startTime" name="stTime" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="endTime" class="form-label fw-medium text-light">End Time:</label>
+                        <input type="time" id="endTime" name="endTime" class="form-control bg-dark text-white border-secondary" required />
+                    </div>
+
+                    <div class="d-grid mt-2">
+                        <button class="btn btn-outline-success fw-bold" type="submit">Book Room</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div>
-            <label for="startTime" class="fw-medium">Start Time:</label>
-            <input type="time" id="startTime" name="stTime" required />
-        </div>
-
-        <div>
-            <label for="endTime" class="fw-medium">End Time:</label>
-            <input type="time" id="endTime" name="endTime" required />
-        </div>
-
-        <button class="btn btn-outline-success" type="submit">Book Room</button>
-        </form>
     </div>
-    
-</body>
+</div>
