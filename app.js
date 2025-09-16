@@ -19,8 +19,8 @@ const flash = require("connect-flash");
 const User = require("./models/users.js");
 const Room = require("./models/room.js");
 const Booking = require("./models/booking.js");
-const upload = require("./middlewares/multer.js");
-const cloudinary = require("./utils/cloudConfig");
+// const upload = require("./middlewares/multer.js");
+const upload = require("./utils/cloudConfig");
 
 const app = express();
 const path = require("path");
@@ -393,15 +393,11 @@ try {
   console.log(req.body);
     const { room_name , room_capacity ,room_date} = req.body;
 
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: "rooms", // optional folder
-    });
-
     const room1 = new Room({
     name:room_name,
     capacity:room_capacity,
     date:room_date,
-    imageUrl: result.secure_url,
+    imageUrl: req.file?.path || req.file?.secure_url,
     });
 
     const savedroom = await room1.save();
