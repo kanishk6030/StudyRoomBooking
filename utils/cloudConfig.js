@@ -11,7 +11,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "notes_uploads",
+    folder: "study_room_booking",
     allowed_formats: ["jpg", "jpeg", "png", "pdf"], 
   },
 });
