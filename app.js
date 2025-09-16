@@ -19,6 +19,8 @@ const flash = require("connect-flash");
 const User = require("./models/users.js");
 const Room = require("./models/room.js");
 const Booking = require("./models/booking.js");
+const upload = require("./middlewares/multer.js");
+const cloudinary = require("./utils/cloudConfig");
 
 const app = express();
 const path = require("path");
@@ -26,8 +28,8 @@ const path = require("path");
 app.set("view engine","ejs");
 app.set("views" , path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"/public")));
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
@@ -386,17 +388,32 @@ app.get("/admin/room",(req,res)=>{
   res.render("./admin/addrooms.ejs");
 })
 
-app.post("/admin/room",async(req,res)=>{
-  const { room_name , room_capacity ,room_date} = req.body;
-  const room1 = new Room({
+app.post("/admin/room",upload.single("room_image"),async(req,res)=>{
+try {
+  console.log(req.body);
+    const { room_name , room_capacity ,room_date} = req.body;
+
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "rooms", // optional folder
+    });
+
+    const room1 = new Room({
     name:room_name,
     capacity:room_capacity,
     date:room_date,
-});
-const savedroom = await room1.save();
-console.log(savedroom);
-req.flash("success","Room added successfully")
-res.redirect("/admin/room");
+    imageUrl: result.secure_url,
+    });
+
+    const savedroom = await room1.save();
+    console.log(savedroom);
+
+    req.flash("success","Room added successfully")
+    return res.redirect("/admin/room");
+} catch (error) {
+  console.log(error);
+    req.flash("error","Failed to add room");
+    return res.redirect("/admin/room")
+}
 })
 
 app.get("/admin/user",async(req,res)=>{
