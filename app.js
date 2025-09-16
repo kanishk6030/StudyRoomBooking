@@ -1,6 +1,5 @@
-if(process.env.NODE_ENV != "production"){
-  require('dotenv').config();
-}
+require('dotenv').config();
+
 const PORT = process.env.PORT;
 
 const express = require('express');
@@ -59,7 +58,7 @@ const sessionOptions = {
   resave:false,
   saveUninitialized : true,
   cookie:{
-    expiry:Date.now + 7 * 24 * 60 * 60 * 1000,
+    expiry:Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly : true,
   }
