@@ -368,7 +368,7 @@ app.put("/book/my/edit/:bookingId",async(req,res)=>{
   const user = await User.findById(updatedBooking.user);
   const userEmail = user.email;
   const qrCodeDataUrl = await generateQRCode(updatedBooking._id);
-  sendConfirmation(savedBooking,userEmail,qrCodeDataUrl);
+  sendConfirmation(updatedBooking,userEmail,qrCodeDataUrl);
   req.flash("success","Updated your booking, Check your mail ");
   res.redirect('/book/my');
 })
