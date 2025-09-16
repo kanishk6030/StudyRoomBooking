@@ -41,3 +41,35 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Restrict date to today onwards
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+
+    const dateInput = document.getElementById("date");
+    const startTimeInput = document.getElementById("startTime");
+    const endTimeInput = document.getElementById("endTime");
+
+    dateInput.min = todayStr;
+
+    // Restrict time if selected date = today
+    dateInput.addEventListener("change", () => {
+        if (dateInput.value === todayStr) {
+            const hh = String(today.getHours()).padStart(2, '0');
+            const min = String(today.getMinutes()).padStart(2, '0');
+            const nowTime = `${hh}:${min}`;
+            startTimeInput.min = nowTime;
+        } else {
+            startTimeInput.removeAttribute("min"); // allow full range on future dates
+        }
+    });
+
+    // Ensure end time is always after start time
+    startTimeInput.addEventListener("change", () => {
+        endTimeInput.min = startTimeInput.value;
+    });
+</script>
