@@ -10,7 +10,7 @@ A full-stack web application that allows users to book available study rooms by 
 - 🗓️ **Slot Booking**: Users can view and book available time slots for different rooms.
 - 📧 **Email Confirmation**: After booking, users receive a confirmation email.
 - 📱 **QR Code Generation**: A unique QR code is sent in the email and can be scanned at the venue for validation.
-- 🔒 **Authentication** *(Optional)*: Secure login system for users and admins.
+- 🔒 **Authentication** *(Optional)*: Secure login system for users and admins .
 
 ---
 
