@@ -1,4 +1,4 @@
-# 📚 Study Room Booking System
+# Study Room Booking System
 
 A full-stack web application that allows users to book available study rooms by selecting specific time slots. Admins manage room listings, and users receive a booking confirmation email with a scannable QR code for verification at the booking location.
 
